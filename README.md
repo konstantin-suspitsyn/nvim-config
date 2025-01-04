@@ -14,4 +14,5 @@ There are few additional plugins installed:
 3. [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - better bottom status line
 4. [oil.nvim](https://github.com/stevearc/oil.nvim) - non-tree file manager for neovim
 5. [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) - preview for markdown
+6. [vim-fugitive](https://github.com/tpope/vim-fugitive) - git integration
 
