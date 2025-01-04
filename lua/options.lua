@@ -1,3 +1,25 @@
+-- This is used by langmapper plugin
+
+local function escape(str)
+  -- You need to escape these characters to work correctly
+  local escape_chars = [[;,."|\]]
+  return vim.fn.escape(str, escape_chars)
+end
+
+-- Recommended to use lua template string
+local en = [[`qwertyuiopasdfghjkl;'zxcvbnm,.]]
+local ru = [[ёйцукенгшщзфывапролджэячсмитьбю]]
+local en_shift = [[~QWERTYUIOPASDFGHJKL:"ZXCVBNM<>]]
+local ru_shift = [[ЁЙЦУКЕНГШЩЗФЫВАПРОЛДЖЭЯЧСМИТЬБЮ]]
+
+vim.opt.langmap = vim.fn.join({
+  -- | `to` should be first     | `from` should be second
+  escape(ru_shift)
+    .. ';'
+    .. escape(en_shift),
+  escape(ru) .. ';' .. escape(en),
+}, ',')
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -56,4 +78,3 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
-
