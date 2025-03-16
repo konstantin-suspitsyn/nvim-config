@@ -136,7 +136,7 @@ return {
     })
 
     -- Change diagnostic symbols in the sign column (gutter)
-    -- if vim.g.have_nerd_font then
+    -- if vim.g.have_nerd_font then:
     --   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
     --   local diagnostic_signs = {}
     --   for type, icon in pairs(signs) do
@@ -163,7 +163,7 @@ return {
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       clangd = {},
-      -- gopls = {},
+      gopls = {},
       pyright = {
         filetypes = {
           'python',
@@ -211,7 +211,8 @@ return {
       'clang-format', -- cpp and c files
       'codelldb', -- c and cpp debug
       'isort',
-      'black',
+      --'black',
+      'ruff-lsp',
       'debugpy',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
