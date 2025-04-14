@@ -214,6 +214,7 @@ return {
       --'black',
       'ruff-lsp',
       'debugpy',
+      'gopls',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
