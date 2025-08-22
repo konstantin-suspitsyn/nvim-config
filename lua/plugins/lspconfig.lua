@@ -226,14 +226,13 @@ return {
       'clang-format', -- cpp and c files
       'codelldb', -- c and cpp debug
       'isort',
-      --'black',
-      'ruff-lsp',
+      'ruff',
       'debugpy',
       'gopls',
       'typescript-language-server',
-      'eslint',
       'prettier',
     })
+
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
