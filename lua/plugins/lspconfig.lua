@@ -230,6 +230,9 @@ return {
       'ruff-lsp',
       'debugpy',
       'gopls',
+      'typescript-language-server',
+      'eslint',
+      'prettier',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

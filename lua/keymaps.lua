@@ -55,3 +55,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --
 -- Keymap to start Oil plugin
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+-- Keymap Neogen
+-- Generation of auto documentation
+local neogen_opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap('n', '<Leader>nf', ":lua require('neogen').generate()<CR>", neogen_opts)
