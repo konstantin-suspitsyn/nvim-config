@@ -148,7 +148,8 @@ return {
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = require('blink.cmp').get_lsp_capabilities()
-    require('lspconfig').lua_ls.setup { capabilities = capabilities }
+    vim.lsp.config('lua_ls', { capabilities = capabilities })
+    -- require('lspconfig').lua_ls.setup { capabilities = capabilities }
 
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -173,9 +174,26 @@ return {
           },
         },
       },
-      pyright = {
-        filetypes = {
-          'python',
+      ruff = {
+        init_options = {
+          settings = {},
+        },
+      },
+      basedpyright = {
+        settings = {
+          basedpyright = {
+            analysis = {
+              diagnosticMode = 'workspace', -- or "workspace"
+              typeCheckingMode = 'strict', -- or "standard", "strict", "recommended", "all", "off"
+              useLibraryCodeForTypes = true,
+              autoSearchPath = true,
+              inlayHints = {
+                callArgumentNames = true,
+                variableTypes = true,
+                functionReturnTypes = true,
+              },
+            },
+          },
         },
       },
       -- rust_analyzer = {},
@@ -185,8 +203,9 @@ return {
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
-      ts_ls = {},
+      -- ts_ls = {},
       --
+      eslint = {},
       html = { filetypes = { 'html', 'twig', 'hbs', 'tmpl' } },
       cssls = {},
       tailwindcss = {},
@@ -225,12 +244,13 @@ return {
       'stylua', -- Used to format Lua code
       'clang-format', -- cpp and c files
       'codelldb', -- c and cpp debug
-      'isort',
-      'ruff',
       'debugpy',
       'gopls',
-      'typescript-language-server',
+      'eslint',
+      -- 'typescript-language-server',
       'prettier',
+      'ruff',
+      'basedpyright',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -243,7 +263,10 @@ return {
           -- by the server configuration above. Useful when disabling
           -- certain features of an LSP (for example, turning off formatting for ts_ls)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
+          vim.lsp.config(server_name, server)
+
+          vim.lsp.enable(server_name)
+          -- require('lspconfig')[server_name].setup(server)
         end,
       },
     }

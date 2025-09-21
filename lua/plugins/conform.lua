@@ -36,17 +36,23 @@ return {
       c = { 'clang-format' },
       cpp = { 'clang-format' },
       -- Conform can also run multiple formatters sequentially
-      python = { 'isort', 'black' },
+      python = {
+        -- To fix auto-fixable lint errors.
+        'ruff_fix',
+        -- To run the Ruff formatter.
+        'ruff_format',
+        -- To organize the imports.
+        'ruff_organize_imports',
+      },
       go = { 'gofumpt' },
-      html = { 'prettierd', 'prettier', stop_after_first = true },
-      scss = { { 'prettierd', 'prettier' } },
-      css = { { 'prettierd', 'prettier' } },
+      html = { 'prettier', stop_after_first = true },
+      css = { 'prettier' },
       toml = { 'taplo' },
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-      json = { 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'prettier', stop_after_first = true },
+      javascriptreact = { 'prettier', stop_after_first = true },
+      typescript = { 'prettier', stop_after_first = true },
+      typescriptreact = { 'prettier', stop_after_first = true },
+      json = { 'prettier', stop_after_first = true },
 
       -- You can use 'stop_after_first' to run the first available formatter from the list
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
