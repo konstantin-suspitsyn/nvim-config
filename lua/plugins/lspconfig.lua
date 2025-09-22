@@ -247,7 +247,7 @@ return {
       'debugpy',
       'gopls',
       'eslint',
-      -- 'typescript-language-server',
+      'typescript-language-server',
       'prettier',
       'ruff',
       'basedpyright',
