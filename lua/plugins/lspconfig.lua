@@ -161,6 +161,9 @@ return {
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
+      buf_ls = {
+        filetypes = { 'proto' },
+      },
       clangd = {},
       gopls = {
         filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
@@ -251,6 +254,7 @@ return {
       'prettier',
       'ruff',
       'basedpyright',
+      'buf_ls',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
